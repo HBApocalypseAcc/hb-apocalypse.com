@@ -518,7 +518,7 @@ BOOL InitApplication( HINSTANCE hInstance)
 	wc.cbClsExtra    = 0;                            
 	wc.cbWndExtra    = sizeof (int);
 	wc.hInstance     = hInstance;
-	wc.hIcon         = NULL;
+	wc.hIcon         = LoadIcon(hInstance, MAKEINTRESOURCE(129)); // IDI_ICON1 = server_ico.ico
 	wc.hCursor       = LoadCursor(NULL, IDC_ARROW);
 	wc.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);
 	wc.lpszMenuName  = NULL;

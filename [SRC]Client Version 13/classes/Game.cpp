@@ -45334,21 +45334,17 @@ void CGame::UpdateScreen_OnGame()
 			GetLocalTime(&SysTime);
 			if (c_reso->IsResolution() == C800x600)
 			{
-				wsprintf(G_cTxt, "HB Apocalypse");
-				PutString_SprFont2(680 - 1 + 1, 1 - 1, G_cTxt, 0, 0, 0);
-				PutString_SprFont2(680 + 1, 1, G_cTxt, 255, 200, 0);
-
 				wsprintf(G_cTxt, "Fps: %d", m_sFPS + 713);
-				PutString(685 - 1, 22 - 1, G_cTxt, RGB(0, 0, 0));
-				PutString(685, 22, G_cTxt, RGB(250, 250, 250));
+				PutString(685 - 1, 2 - 1, G_cTxt, RGB(0, 0, 0));
+				PutString(685, 2, G_cTxt, RGB(250, 250, 250));
 
 				wsprintf(G_cTxt, "Time: %d", SysTime.wSecond);
-				PutString(740 - 1, 22 - 1, G_cTxt, RGB(0, 0, 0));
-				PutString(740, 22, G_cTxt, RGB(250, 250, 250));
+				PutString(740 - 1, 2 - 1, G_cTxt, RGB(0, 0, 0));
+				PutString(740, 2, G_cTxt, RGB(250, 250, 250));
 
 				wsprintf(G_cTxt, "Ping: %s", pingValue);
-				PutString(685 - 1, 22 - 1 + 15, G_cTxt, RGB(0, 0, 0));
-				PutString(685, 22 + 15, G_cTxt, RGB(250, 250, 250));
+				PutString(685 - 1, 2 - 1 + 15, G_cTxt, RGB(0, 0, 0));
+				PutString(685, 2 + 15, G_cTxt, RGB(250, 250, 250));
 
 				/*if (m_bQuestHelper) {
 					if (m_stQuest[QuestShow].sQuestType != NULL)
@@ -45390,19 +45386,16 @@ void CGame::UpdateScreen_OnGame()
 			}
 			else if (c_reso->IsResolution() == C1024x768)
 			{
-				wsprintf(G_cTxt, "HB Apocalypse");
-				PutString_SprFont2(904 - 1 + 1, 1 - 1, G_cTxt, 0, 0, 0);
-				PutString_SprFont2(904 + 1, 1, G_cTxt, 255, 200, 0);
 				wsprintf(G_cTxt, "Fps: %d", m_sFPS + 713);
-				PutString(909 - 1, 22 - 1, G_cTxt, RGB(0, 0, 0));
-				PutString(909, 22, G_cTxt, RGB(250, 250, 250));
+				PutString(909 - 1, 2 - 1, G_cTxt, RGB(0, 0, 0));
+				PutString(909, 2, G_cTxt, RGB(250, 250, 250));
 				wsprintf(G_cTxt, "Time: %d", SysTime.wSecond);
-				PutString(964 - 1, 22 - 1, G_cTxt, RGB(0, 0, 0));
-				PutString(964, 22, G_cTxt, RGB(250, 250, 250));
+				PutString(964 - 1, 2 - 1, G_cTxt, RGB(0, 0, 0));
+				PutString(964, 2, G_cTxt, RGB(250, 250, 250));
 
 				wsprintf(G_cTxt, "Ping: %s", pingValue);
-				PutString(909 - 1, 22 - 1 + 15, G_cTxt, RGB(0, 0, 0));
-				PutString(909, 22 + 15, G_cTxt, RGB(250, 250, 250));
+				PutString(909 - 1, 2 - 1 + 15, G_cTxt, RGB(0, 0, 0));
+				PutString(909, 2 + 15, G_cTxt, RGB(250, 250, 250));
 
 				/*if (m_bQuestHelper) {
 					if (m_stQuest[QuestShow].sQuestType != NULL)
@@ -45444,19 +45437,16 @@ void CGame::UpdateScreen_OnGame()
 			}
 			else if (c_reso->IsResolution() == C640x480)
 			{
-				wsprintf(G_cTxt, "HB Apocalypse");
-				PutString_SprFont2(520 - 1 + 1, 1 - 1, G_cTxt, 0, 0, 0);
-				PutString_SprFont2(520 + 1, 1, G_cTxt, 255, 200, 0);
 				wsprintf(G_cTxt, "Fps: %d", m_sFPS + 713);
-				PutString(525 - 1, 22 - 1, G_cTxt, RGB(0, 0, 0));
-				PutString(525, 22, G_cTxt, RGB(250, 250, 250));
+				PutString(525 - 1, 2 - 1, G_cTxt, RGB(0, 0, 0));
+				PutString(525, 2, G_cTxt, RGB(250, 250, 250));
 				wsprintf(G_cTxt, "Time: %d", SysTime.wSecond);
-				PutString(580 - 1, 22 - 1, G_cTxt, RGB(0, 0, 0));
-				PutString(580, 22, G_cTxt, RGB(250, 250, 250));
+				PutString(580 - 1, 2 - 1, G_cTxt, RGB(0, 0, 0));
+				PutString(580, 2, G_cTxt, RGB(250, 250, 250));
 
 				wsprintf(G_cTxt, "Ping: %s", pingValue);
-				PutString(580 - 1, 22 - 1 + 15, G_cTxt, RGB(0, 0, 0));
-				PutString(580, 22 + 15, G_cTxt, RGB(250, 250, 250));
+				PutString(525 - 1, 2 - 1 + 15, G_cTxt, RGB(0, 0, 0));
+				PutString(525, 2 + 15, G_cTxt, RGB(250, 250, 250));
 
 				/*if (m_bQuestHelper) {
 					if (m_stQuest[QuestShow].sQuestType != NULL)
