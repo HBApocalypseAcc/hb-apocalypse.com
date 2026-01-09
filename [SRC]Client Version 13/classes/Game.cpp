@@ -13,8 +13,8 @@
 #include <thread>
 #include <iomanip>  // Para std::fixed y std::setprecision
 
-#define SERVER_IP "207.246.116.137"
-#define SERVER_PORT 8888
+#define SERVER_IP "212.47.64.121"
+#define SERVER_PORT 3197
 #define UDP_BUFFER_SIZE 1 // Tamaño mínimo
 
 // Resolution 1024x768
@@ -46124,14 +46124,11 @@ void CGame::OnTimer()
 		{
 			//sendMessageToServer(SOCKMSG_PING);
 
-			//startTime = std::chrono::high_resolution_clock::now();
-			//request_ping();
-
-			std::thread timerThread([this]() {
-				//std::this_thread::sleep_for(std::chrono::milliseconds(180));
-				this->m_dPing = test_request_ping();
-			});
-			timerThread.detach();
+			// Ping via TCP usando el socket del juego
+			if (m_bShowTiming && m_pGSock != NULL && m_pGSock->m_bIsAvailable == TRUE) {
+				startTime = std::chrono::high_resolution_clock::now();
+				request_ping();
+			}
 
 			if (!reqhp)	reqhp = true;
 			reqmobhptime = dwTime;
@@ -72910,7 +72907,8 @@ void CGame::GameRecvMsgHandler(DWORD dwMsgSize, char * pData)
 		break;
 
 	case NOTIFY_PING:
-	//	endTime = std::chrono::high_resolution_clock::now();
+		endTime = std::chrono::high_resolution_clock::now();
+		m_dPing = std::chrono::duration<double, std::milli>(endTime - startTime).count();
 		break;
 
 	case NOT_CHARQUESTS:

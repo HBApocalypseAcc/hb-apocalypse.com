@@ -717,8 +717,8 @@
 #define	GET_OFFICIAL_MAP_NAME53	"Dungeon L4"
 #define	GET_OFFICIAL_MAP_NAME54	"Revival Zone"
 #define	GET_OFFICIAL_MAP_NAME55	"Revival Zone"
-#define	GET_OFFICIAL_MAP_NAME56	"Event Garden" //"Aresien Garden" //Event Garden
-#define	GET_OFFICIAL_MAP_NAME57	"Garden" //"Eldiniel Garden" //Neutral Garden
+#define	GET_OFFICIAL_MAP_NAME56	"Aresien Garden" //"Aresien Garden" //Event Garden
+#define	GET_OFFICIAL_MAP_NAME57	"Eldiniel Garden" //"Eldiniel Garden" //Neutral Garden
 #define	GET_OFFICIAL_MAP_NAME58	"Middleland Mine"
 #define	GET_OFFICIAL_MAP_NAME59	"DunLand"
 #define	GET_OFFICIAL_MAP_NAME60	"Tower of Hell 1"
