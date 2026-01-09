@@ -150,8 +150,8 @@ Los logs se almacenan en:
 #!/bin/bash
 # backup.sh
 DATE=$(date +%Y%m%d_%H%M%S)
-mysqldump -u hbuser -p helbreath > backups/helbreath_$DATE.sql
-mysqldump -u hblogin -p helbreath_login > backups/helbreath_login_$DATE.sql
+mysqldump -u hbuser -pyour_password helbreath > backups/helbreath_$DATE.sql
+mysqldump -u hblogin -pyour_password helbreath_login > backups/helbreath_login_$DATE.sql
 ```
 
 Ejecutar diariamente con cron:

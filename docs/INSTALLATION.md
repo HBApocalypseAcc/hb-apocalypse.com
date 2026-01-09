@@ -116,6 +116,7 @@ Copie los archivos de configuración y ajústelos según sus necesidades.
    CREATE DATABASE helbreath;
    CREATE DATABASE helbreath_login;
    CREATE USER 'hbuser'@'localhost' IDENTIFIED BY 'your_password';
+   CREATE USER 'hblogin'@'localhost' IDENTIFIED BY 'your_password';
    GRANT ALL PRIVILEGES ON helbreath.* TO 'hbuser'@'localhost';
    GRANT ALL PRIVILEGES ON helbreath_login.* TO 'hblogin'@'localhost';
    FLUSH PRIVILEGES;
