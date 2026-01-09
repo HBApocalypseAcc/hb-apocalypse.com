@@ -2018,12 +2018,11 @@ void CGame::UpdateScreen_OnMainMenu()
 
 		pMI->AddRect(384 + rec_res_x, 177 + rec1_res_y, 548 + rec_res_x2, 198 + rec1_res_y2);
 		pMI->AddRect(384 + rec_res_x, 215 + rec2_res_y, 548 + rec_res_x2, 236 + rec2_res_y2);
-		pMI->AddRect(384 + rec_res_x, 254 + rec3_res_y, 548 + rec_res_x2, 275 + rec3_res_y2);
 		m_DInput.m_sX = 320 + newres_x;
 		m_DInput.m_sY = 240 + newres_y;
 
 		m_cCurFocus = 1;
-		m_cMaxFocus = 3;
+		m_cMaxFocus = 2;
 
 		m_bEnterPressed = FALSE;
 		m_cArrowPressed = 0;
@@ -2045,25 +2044,21 @@ void CGame::UpdateScreen_OnMainMenu()
 
 	if ((msX >= 384 + rec_res_x) && (msY >= 177 + rec1_res_y) && (msX <= 548 + rec_res_x2) && (msY <= 198 + rec1_res_y2)) m_cCurFocus = 1;
 	if ((msX >= 384 + rec_res_x) && (msY >= 215 + rec2_res_y) && (msX <= 548 + rec_res_x2) && (msY <= 236 + rec2_res_y2)) m_cCurFocus = 2;
-	if ((msX >= 384 + rec_res_x) && (msY >= 254 + rec3_res_y) && (msX <= 548 + rec_res_x2) && (msY <= 275 + rec3_res_y2)) m_cCurFocus = 3;
 
 	if (c_reso->IsResolution() == C640x480)
 	{
 		m_pSprite[SPRID_BUTTONS]->PutSpriteFast(384 + rec_res_x, 177 + rec1_res_y, 3, dwTime);
-		m_pSprite[SPRID_BUTTONS]->PutSpriteFast(384 + rec_res_x + rec_more, 215 + rec2_res_y, 4, dwTime);
-		m_pSprite[SPRID_BUTTONS]->PutSpriteFast(384 + rec_res_x + rec_more, 254 + rec3_res_y + rec_more, 5, dwTime);
+		m_pSprite[SPRID_BUTTONS]->PutSpriteFast(384 + rec_res_x + rec_more, 215 + rec2_res_y, 5, dwTime);
 	}
 	else if (c_reso->IsResolution() == C800x600)
 	{
 		m_pSprite[SPRID_BUTTONS + 1]->PutSpriteFast(384 + rec_res_x, 177 + rec1_res_y, 3, dwTime);
-		m_pSprite[SPRID_BUTTONS + 1]->PutSpriteFast(384 + rec_res_x + rec_more, 215 + rec2_res_y, 4, dwTime);
-		m_pSprite[SPRID_BUTTONS + 1]->PutSpriteFast(384 + rec_res_x + rec_more, 254 + rec3_res_y + rec_more, 5, dwTime);
+		m_pSprite[SPRID_BUTTONS + 1]->PutSpriteFast(384 + rec_res_x + rec_more, 215 + rec2_res_y, 5, dwTime);
 	}
 	else if (c_reso->IsResolution() == C1024x768)
 	{
 		m_pSprite[SPRID_BUTTONS + 2]->PutSpriteFast(384 + rec_res_x, 177 + rec1_res_y, 3, dwTime);
-		m_pSprite[SPRID_BUTTONS + 2]->PutSpriteFast(384 + rec_res_x + rec_more, 215 + rec2_res_y, 4, dwTime);
-		m_pSprite[SPRID_BUTTONS + 2]->PutSpriteFast(384 + rec_res_x + rec_more, 254 + rec3_res_y + rec_more, 5, dwTime);
+		m_pSprite[SPRID_BUTTONS + 2]->PutSpriteFast(384 + rec_res_x + rec_more, 215 + rec2_res_y, 5, dwTime);
 	}
 
 	switch (m_cCurFocus) {
@@ -2077,19 +2072,11 @@ void CGame::UpdateScreen_OnMainMenu()
 		break;
 	case 2:
 		if (c_reso->IsResolution() == C640x480)
-			m_pSprite[SPRID_BUTTONS]->PutSpriteFast(384 + rec_res_x + rec_more, 215 + rec2_res_y, 1, dwTime);
+			m_pSprite[SPRID_BUTTONS]->PutSpriteFast(384 + rec_res_x + rec_more, 215 + rec2_res_y, 2, dwTime);
 		else if (c_reso->IsResolution() == C800x600)
-			m_pSprite[SPRID_BUTTONS + 1]->PutSpriteFast(384 + rec_res_x + rec_more, 215 + rec2_res_y, 1, dwTime);
+			m_pSprite[SPRID_BUTTONS + 1]->PutSpriteFast(384 + rec_res_x + rec_more, 215 + rec2_res_y, 2, dwTime);
 		else if (c_reso->IsResolution() == C1024x768)
-			m_pSprite[SPRID_BUTTONS + 2]->PutSpriteFast(384 + rec_res_x + rec_more, 215 + rec2_res_y, 1, dwTime);
-		break;
-	case 3:
-		if (c_reso->IsResolution() == C640x480)
-			m_pSprite[SPRID_BUTTONS]->PutSpriteFast(384 + rec_res_x + rec_more, 254 + rec3_res_y + rec_more, 2, dwTime);
-		else if (c_reso->IsResolution() == C800x600)
-			m_pSprite[SPRID_BUTTONS + 1]->PutSpriteFast(384 + rec_res_x + rec_more, 254 + rec3_res_y + rec_more, 2, dwTime);
-		else if (c_reso->IsResolution() == C1024x768)
-			m_pSprite[SPRID_BUTTONS + 2]->PutSpriteFast(384 + rec_res_x + rec_more, 254 + rec3_res_y + rec_more, 2, dwTime);
+			m_pSprite[SPRID_BUTTONS + 2]->PutSpriteFast(384 + rec_res_x + rec_more, 215 + rec2_res_y, 2, dwTime);
 		break;
 	}
 
@@ -2101,11 +2088,7 @@ void CGame::UpdateScreen_OnMainMenu()
 			m_cCurFocus--;
 			if (m_cCurFocus <= 0) m_cCurFocus = m_cMaxFocus;
 			break;
-			//agregado account case 2
 		case 2:
-			m_cCurFocus++;
-			if (m_cCurFocus > m_cMaxFocus) m_cCurFocus = 2;
-			break;
 		case 3:
 			m_cCurFocus++;
 			if (m_cCurFocus > m_cMaxFocus) m_cCurFocus = 1;
@@ -2123,11 +2106,6 @@ void CGame::UpdateScreen_OnMainMenu()
 			ChangeGameMode(DEF_GAMEMODE_ONSELECTSERVER);
 			return;
 		case 2:
-			//GoHomepage(1);
-			delete pMI;
-			ChangeGameMode(DEF_GAMEMODE_ONCREATENEWACCOUNT);
-			return;
-		case 3:
 			delete pMI;
 			ChangeGameMode(DEF_GAMEMODE_ONQUIT);
 			return;
@@ -2146,13 +2124,6 @@ void CGame::UpdateScreen_OnMainMenu()
 			delete pMI;
 			break;
 		case 2:
-			//GoHomepage(1);
-			delete pMI;
-			ChangeGameMode(DEF_GAMEMODE_ONCREATENEWACCOUNT);
-			return;
-			//	delete pMI;
-			//	break;
-		case 3:
 			delete pMI;
 			ChangeGameMode(DEF_GAMEMODE_ONQUIT);
 			return;
