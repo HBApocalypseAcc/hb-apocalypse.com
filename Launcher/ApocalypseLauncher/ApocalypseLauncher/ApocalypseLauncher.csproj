@@ -1,0 +1,72 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>server_ico.ico</ApplicationIcon>
+    
+    <!-- Metadata para mejorar reputación en SmartScreen/Defender -->
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.0</Version>
+    <Company>HB Apocalypse</Company>
+    <Product>Apocalypse Launcher</Product>
+    <Description>Official game launcher for HB Apocalypse</Description>
+    <Copyright>Copyright © 2024-2025 HB Apocalypse</Copyright>
+    <AssemblyTitle>Apocalypse Launcher</AssemblyTitle>
+    
+    <!-- Optimizaciones de tamaño para publish (sin trimming, WPF no lo soporta) -->
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Logo_Server.png" />
+    <None Remove="server_ico.ico" />
+    <None Remove="App.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- WebView2 eliminado: no se usa y añade ~30MB -->
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Logo_Server.png" />
+    <Resource Include="server_ico.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Microsoft.Web.WebView2.*.xml">
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="CleanupPublishArtifacts" AfterTargets="Publish">
+    <ItemGroup>
+      <_ExtraPublishFiles Include="$(PublishDir)*.pdb" />
+      <_ExtraPublishFiles Include="$(PublishDir)*.xml" />
+      <_ExtraPublishFiles Include="$(PublishDir)*.config" />
+    </ItemGroup>
+    <Delete Files="@(_ExtraPublishFiles)" />
+  </Target>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>
