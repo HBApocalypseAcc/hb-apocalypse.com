@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  helbreath-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hb-apocalypse-server
+    ports:
+      - "2848:2848"  # Login Server
+      - "1234:1234"  # Game Server
+    volumes:
+      - ./server:/opt/helbreath/server
+      - ./config:/opt/helbreath/config
+      - ./logs:/opt/helbreath/logs
+      - ./data:/opt/helbreath/data
+    restart: unless-stopped
+    environment:
+      - SERVER_NAME=Helbreath Apocalypse
+      - MAX_PLAYERS=500
+    networks:
+      - helbreath-net
+
+networks:
+  helbreath-net:
+    driver: bridge
