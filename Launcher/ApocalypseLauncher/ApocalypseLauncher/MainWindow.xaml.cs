@@ -1071,25 +1071,30 @@ namespace ApocalypseLauncher
         /// <summary>
         /// Updates ddraw.ini to control cnc-ddraw fullscreen/windowed mode.
         /// cnc-ddraw is a DirectDraw wrapper that provides modern Windows compatibility.
+        /// When fullscreen is enabled, the game stretches to fill the entire screen.
         /// </summary>
-        /// <param name="fullscreen">true for fullscreen, false for windowed mode</param>
+        /// <param name="fullscreen">true for fullscreen stretched, false for windowed mode</param>
         private void UpdateDDrawConfig(bool fullscreen)
         {
             try
             {
                 string ddrawIniPath = Path.Combine(_rootPath, "ddraw.ini");
                 
+                // If ddraw.ini doesn't exist, create it with default settings
                 if (!File.Exists(ddrawIniPath))
                 {
-                    // ddraw.ini doesn't exist - cnc-ddraw might not be installed
+                    CreateDefaultDDrawConfig(ddrawIniPath, fullscreen);
                     return;
                 }
                 
                 string content = File.ReadAllText(ddrawIniPath);
                 var lines = content.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None).ToList();
                 
+                // Track which settings we've updated
                 bool foundFullscreen = false;
                 bool foundWindowed = false;
+                bool foundMaintas = false;
+                bool foundBoxing = false;
                 
                 for (int i = 0; i < lines.Count; i++)
                 {
@@ -1111,20 +1116,118 @@ namespace ApocalypseLauncher
                         lines[i] = $"windowed={(!fullscreen).ToString().ToLower()}";
                         foundWindowed = true;
                     }
+                    // maintas=false means stretch to fill (no aspect ratio preservation)
+                    else if (line.StartsWith("maintas=", StringComparison.OrdinalIgnoreCase))
+                    {
+                        // When fullscreen, disable aspect ratio preservation to stretch
+                        lines[i] = $"maintas={(!fullscreen).ToString().ToLower()}";
+                        foundMaintas = true;
+                    }
+                    // boxing=false means no letterboxing (stretch to fill)
+                    else if (line.StartsWith("boxing=", StringComparison.OrdinalIgnoreCase))
+                    {
+                        lines[i] = $"boxing={(!fullscreen).ToString().ToLower()}";
+                        foundBoxing = true;
+                    }
                 }
                 
-                // If settings weren't found, we don't add them (the file structure is complex)
-                // The user might be using a custom ddraw.ini
-                
-                if (foundFullscreen || foundWindowed)
+                // Add missing settings if needed
+                int insertIndex = -1;
+                for (int i = 0; i < lines.Count; i++)
                 {
-                    File.WriteAllText(ddrawIniPath, string.Join("\r\n", lines));
+                    if (lines[i].TrimStart().StartsWith("[ddraw]", StringComparison.OrdinalIgnoreCase))
+                    {
+                        insertIndex = i + 1;
+                        break;
+                    }
                 }
+                
+                if (insertIndex == -1)
+                {
+                    // No [ddraw] section found, add it
+                    lines.Insert(0, "[ddraw]");
+                    insertIndex = 1;
+                }
+                
+                if (!foundBoxing)
+                {
+                    lines.Insert(insertIndex, $"boxing={(!fullscreen).ToString().ToLower()}");
+                }
+                if (!foundMaintas)
+                {
+                    lines.Insert(insertIndex, $"maintas={(!fullscreen).ToString().ToLower()}");
+                }
+                if (!foundWindowed)
+                {
+                    lines.Insert(insertIndex, $"windowed={(!fullscreen).ToString().ToLower()}");
+                }
+                if (!foundFullscreen)
+                {
+                    lines.Insert(insertIndex, $"fullscreen={fullscreen.ToString().ToLower()}");
+                }
+                
+                File.WriteAllText(ddrawIniPath, string.Join("\r\n", lines));
             }
             catch
             {
                 // Silently fail - ddraw.ini modification is optional
             }
+        }
+        
+        /// <summary>
+        /// Creates a default ddraw.ini configuration file for cnc-ddraw.
+        /// This enables fullscreen stretched mode when fullscreen is true.
+        /// </summary>
+        private void CreateDefaultDDrawConfig(string path, bool fullscreen)
+        {
+            var sb = new System.Text.StringBuilder();
+            sb.AppendLine("; cnc-ddraw configuration for Helbreath Apocalypse");
+            sb.AppendLine("; This file is auto-generated by the Apocalypse Launcher");
+            sb.AppendLine("; Visit https://github.com/FunkyFr3sh/cnc-ddraw for more info");
+            sb.AppendLine();
+            sb.AppendLine("[ddraw]");
+            sb.AppendLine("; Windowed mode (false = fullscreen)");
+            sb.AppendLine($"windowed={(!fullscreen).ToString().ToLower()}");
+            sb.AppendLine();
+            sb.AppendLine("; Fullscreen mode");
+            sb.AppendLine($"fullscreen={fullscreen.ToString().ToLower()}");
+            sb.AppendLine();
+            sb.AppendLine("; Maintain aspect ratio (false = stretch to fill screen)");
+            sb.AppendLine($"maintas={(!fullscreen).ToString().ToLower()}");
+            sb.AppendLine();
+            sb.AppendLine("; Letterbox/pillarbox (false = stretch to fill)");
+            sb.AppendLine($"boxing={(!fullscreen).ToString().ToLower()}");
+            sb.AppendLine();
+            sb.AppendLine("; Anti-aliasing");
+            sb.AppendLine("antialiasing=on");
+            sb.AppendLine();
+            sb.AppendLine("; Renderer (auto, opengl, gdi, direct3d9)");
+            sb.AppendLine("renderer=auto");
+            sb.AppendLine();
+            sb.AppendLine("; VSync");
+            sb.AppendLine("vsync=on");
+            sb.AppendLine();
+            sb.AppendLine("; Window position (centered)");
+            sb.AppendLine("posX=-32000");
+            sb.AppendLine("posY=-32000");
+            sb.AppendLine();
+            sb.AppendLine("; Use 0 for game's internal resolution");
+            sb.AppendLine("width=0");
+            sb.AppendLine("height=0");
+            sb.AppendLine();
+            sb.AppendLine("; Window border in windowed mode");
+            sb.AppendLine("border=true");
+            sb.AppendLine();
+            sb.AppendLine("; Allow resizing");
+            sb.AppendLine("resizable=true");
+            sb.AppendLine();
+            sb.AppendLine("; Device mode");
+            sb.AppendLine("devmode=true");
+            sb.AppendLine();
+            sb.AppendLine("; Save settings on exit");
+            sb.AppendLine("savesettings=1");
+            
+            File.WriteAllText(path, sb.ToString());
         }
     }
 }
