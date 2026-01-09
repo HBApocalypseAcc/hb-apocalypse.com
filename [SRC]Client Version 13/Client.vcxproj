@@ -64,10 +64,10 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Debug\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Helbreath Apocalypse</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Helbreath Argentina</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Desbug|Win32'">Helbreath Apocalypse</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Desbug|x64'">Helbreath Argentina</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">HelbreathApocalypse</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">HelbreathApocalypse</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Desbug|Win32'">HelbreathApocalypse</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Desbug|x64'">HelbreathApocalypse</TargetName>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Desbug|Win32'">.\Archive\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Desbug|Win32'">.\Debug\</IntDir>
   </PropertyGroup>
@@ -100,7 +100,7 @@
     <Link>
       <AdditionalOptions>/FORCE:UNRESOLVED %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>Libs\search.lib;Libs\ACHEV.LIB;Libs\wsock32.lib;Libs\DINPUT.LIB;Libs\DSOUND.LIB;Libs\DXGUID.LIB;Libs\ddraw.lib;Libs\IMM32.LIB;Libs\winmm.lib;Libs\Cint.lib;Libs\cximage.lib;Libs\jpeg.lib;legacy_stdio_definitions.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>Archive/Helbreath Apocalypse.exe</OutputFile>
+      <OutputFile>Archive/HelbreathApocalypse.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>MSVCRTD;LIBC;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <SubSystem>Windows</SubSystem>
@@ -143,7 +143,7 @@
     <Link>
       <AdditionalOptions>/FORCE:UNRESOLVED %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>Libs\search.lib;Libs\ACHEV.LIB;Libs\wsock32.lib;Libs\DINPUT.LIB;Libs\DSOUND.LIB;Libs\DXGUID.LIB;Libs\ddraw.lib;Libs\IMM32.LIB;Libs\winmm.lib;Libs\Cint.lib;Libs\cximage.lib;Libs\jpeg.lib;legacy_stdio_definitions.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>Archive/Helbreath Argentina.exe</OutputFile>
+      <OutputFile>Archive/HelbreathApocalypse.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>MSVCRTD;LIBC;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <SubSystem>Windows</SubSystem>
@@ -158,7 +158,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Desbug|Win32'">
     <Link>
-      <OutputFile>Archive/Helbreath Apocalypse.exe</OutputFile>
+      <OutputFile>Archive/HelbreathApocalypse.exe</OutputFile>
       <SubSystem>Windows</SubSystem>
       <IgnoreSpecificDefaultLibraries>MSVCRTD;LIBC;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <AdditionalDependencies>Libs\search.lib;Libs\ACHEV.LIB;Libs\wsock32.lib;Libs\DINPUT.LIB;Libs\DSOUND.LIB;Libs\DXGUID.LIB;Libs\ddraw.lib;Libs\IMM32.LIB;Libs\winmm.lib;Libs\Cint.lib;Libs\cximage.lib;Libs\Jpeg.lib;legacy_stdio_definitions.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -175,7 +175,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Desbug|x64'">
     <Link>
-      <OutputFile>Archive/Helbreath Argentina.exe</OutputFile>
+      <OutputFile>Archive/HelbreathApocalypse.exe</OutputFile>
       <SubSystem>Windows</SubSystem>
       <IgnoreSpecificDefaultLibraries>MSVCRTD;LIBC;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <AdditionalDependencies>Libs\search.lib;Libs\ACHEV.LIB;Libs\wsock32.lib;Libs\DINPUT.LIB;Libs\DSOUND.LIB;Libs\DXGUID.LIB;Libs\ddraw.lib;Libs\IMM32.LIB;Libs\winmm.lib;Libs\Cint.lib;Libs\cximage.lib;Libs\Jpeg.lib;legacy_stdio_definitions.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
